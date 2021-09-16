@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.logo_img{
+    width: 250px;
+    display: flex;
+    justify-content: center;
+}
+
+.logo_img img{
+    width: 100%;
+}
+
+   /* site report  */
+
+
+.job_details span{
+    font-weight: 600;
+}
+
+.img-box{
+    width: 100%;
+    text-align: center;
+}
+
+.img-box img{
+    width: 100%;
+}
+
+table{
+    width: 100%;
+    background-color: #e6e6e6;
+    font-size: 16px;
+}
+table, th, td{
+    border: 1px solid black;
+    text-align: center;
+    padding: 5px;
+}
+
+.notice span{
+    font-weight: 600;
+}
+
+.notice p{
+    font-size: 19px;
+}

@@ -1,0 +1,64 @@
+
+
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        function send(){
+  
+  $.post("http://localhost:8000/api/newReport",
+  {
+    good: [{"name":"dasdasd"}],
+    city: "Duckburg"
+  },
+  function(data, status){
+ console.log(data);
+  });
+
+        }
+    </script>
+
+
+
+   <body>
+      <form action = "http://localhost:5000/buckets" method = "POST" 
+         enctype = "multipart/form-data">
+         <input type = "file" name = "file" id="file"/>
+         <input type = "button" onclick="send1()"/>
+      </form>   
+   </body>
+</html>
+
+<script>
+
+$("#file").change(function(){
+            alert("A file has been selected.");
+        });
+
+
+
+function send1(){
+var form_data = new FormData();
+form_data.append('file', $('#file').prop('files')[0]);
+var jwtoken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTYzMTYyNTQ1OSwiZXhwIjoxNjMxNjI5MDU5LCJuYmYiOjE2MzE2MjU0NTksImp0aSI6Imw0d3l0SXBpQU9tNG1keTIiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.yUosi1vUri_IQApUTkCMvXhTro0-zBsMHiWk3VBkGGc";
+$.ajax("http://localhost:8000/api/upload", {
+method: "POST",
+beforeSend: function(xhr) {
+// xhr.setRequestHeader("Content-Type", "application/json");
+xhr.setRequestHeader('Authorization', 'Bearer ' + jwtoken);
+},
+ data: form_data,
+ success: function(r){
+    console.log(r);
+ },
+ contentType: false,
+    cache: false,
+    processData: false
+});
+
+    }
+</script>
+
+
+
+    </head>    <input type="button" onclick="send()">
